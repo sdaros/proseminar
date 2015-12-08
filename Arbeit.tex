@@ -1,0 +1,234 @@
+\documentclass[12pt,
+				a4paper,
+				twoside=false,
+				titlepage=true,
+				bibliography=totoc, %bibl zu InhVz
+				listof=totoc, %Verzeichnisse zu InhVz
+				numbers=noenddot]{scrartcl}
+\usepackage{lmodern}
+\usepackage{fontspec}
+% used to insert formatted code blocks (for many different programming languages)
+\usepackage{minted}
+% simply table creation
+\usepackage{tabularx}
+
+\usepackage[ngerman]{babel}  %Umlaute mit "erzeugen !!!
+\usepackage[colorlinks, linkcolor = black, citecolor = black, filecolor = black, urlcolor = blue]{hyperref}
+\usepackage[includeheadfoot,paper=a4paper,left=3.5cm,right=2.5cm,top=1.6cm,bottom = 1.3cm]{geometry}
+\usepackage[table,xcdraw]{xcolor}
+
+\newcommand{\changefont}[3]{
+\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+\usepackage{float}
+\floatstyle{boxed} 
+\restylefloat{figure}	%Ränder um alle Abbildungen
+
+\usepackage{fancyhdr} %header
+\usepackage{booktabs,ctable} %Tabellen
+\usepackage[format=hang,indention=1cm,font=md ,labelfont=bf,
+			labelsep=space, %kein ':' hinter Abb., Tab.
+			nooneline,
+			justification=centering
+			]{caption}
+\captionsetup{font=small}
+
+%Unterschriften aller Art
+\addto\captionsngerman{%
+\renewcommand{\figurename}{Abb.}} %Abb. statt Abbildungen
+\addto\captionsngerman{%
+\renewcommand{\tablename}{Tab.}} %Tab. statt Tabelle
+\usepackage{eurosym} %Eurosymbol mit \euro{}
+\usepackage{url} %URLSs adden mit \url{}
+\usepackage{titlesec} % Textüberschriften anpassen
+
+
+%%%%%%%%%%%%%%%%%%%%%% titlesec %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat{\section}[hang]{\large\bfseries}{\thesection. }{0pt}{}%space in der hinteren oder punkte in der vorderen anders entscheinden
+\titleformat{\subsection}[hang]{\normalsize\bfseries}{\thesubsection. }{0pt}{}
+\titleformat{\subsubsection}[hang]{\normalsize\bfseries}{\thesubsubsection. }{0pt}{}
+\titleformat{\paragraph}[hang]{\normalsize\mdseries\itshape}{\theparagraph\quad}{0pt}{} %mdseries: Nicht fett; itshape: kursiv
+
+\titlespacing{\section}{0pt}{0pt}{8pt}
+\titlespacing{\subsection}{0pt}{20pt}{8pt}
+\titlespacing{\subsubsection}{0pt}{20pt}{8pt}
+\titlespacing{\paragraph}{0pt}{30pt}{3pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%% titlesec %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[autostyle,         						
+	 		%german=guillemets,
+	  		]{csquotes}
+	  		
+\usepackage[backend=biber,
+       style=authoryear-icomp-wi,
+       citestyle=authoryear-icomp-wi,
+       bibstyle=authoryear-icomp-wi,
+       firstinits=true,
+       hyperref=true,
+       ibidtracker=true,
+       terseinits=true,
+       uniquename=false,
+       uniquelist=false,
+       sortlocale=de_DE,
+       pagetracker=false,
+       natbib=true,
+       url=false, 
+       doi=false,
+       isbn=false,
+       eprint=false,
+       maxcitenames=2,
+       maxnames=2,
+       minnames=1,
+       maxbibnames=99,
+       sorting=nyt
+       ]{biblatex}
+       
+\setcounter{biburllcpenalty}{7000}		%Kürzen von Überlangen URLs in dem Literaturverzeichnis
+	
+\usepackage{tocloft}
+\renewcommand\cftfigpresnum{\bfseries Abb. }
+\renewcommand\cftfigaftersnum{\normalfont}\settowidth{\cftfignumwidth}{\cftfigpresnum}
+\renewcommand{\cftfigaftersnumb}{\quad}		%Abb. vor jeder Abbildung im Abbildungsverzeichnis + Nummerierung
+
+\renewcommand\cfttabpresnum{\bfseries Tab. }
+\renewcommand\cfttabaftersnum{\normalfont}\settowidth{\cfttabnumwidth}{\cfttabpresnum}
+\renewcommand{\cfttabaftersnumb}{\quad}		%Tab. vor jeder Tabelle im Tabellenverzeichnis + Nummerierung
+	
+	
+	    		
+\usepackage{graphicx} %Bilder Einfügen
+\usepackage[onehalfspacing]{setspace} %1,5 Zeilenabstand
+\usepackage[printonlyused]{acronym} %Abkürzungsverzeichnis
+
+\setlength{\bibitemsep}{1em}     % Abstand zwischen den Literaturangaben
+\setlength{\bibhang}{2em}        % Einzug nach jeweils erster Zeile
+\addbibresource{Literatur.bib}
+\DeclareLanguageMapping{ngerman}{ngerman-apa} 						
+\defbibheading{head}{\section*{Literaturverzeichnis}}
+\setkomafont{sectioning}{\normalcolor\bfseries}
+\urlstyle{same}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Formelverzeichnis %%%%%%%%%%%%%%%%
+\DeclareNewTOC[%
+ type=formel,
+ name={Formel},%
+ hang=1.9em,%
+ listname={Formelverzeichnis}
+]{for}
+
+\newcommand*{\formelentry}[1]{%
+ \addcontentsline{for}{formel}{\textbf{Form.} \protect\numberline{\textbf{\theequation}} #1}%
+} %Abkürzung Form. vor jeder Formel im Formelverzeichnis
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Formelverzeichnis %%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[R]{}
+\fancyhead[L]{RDF basierte semantische Annotationsansätze}
+\usepackage{blindtext}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%  Beginn des Dokuments %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[nosumlimits]{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{here}
+\usepackage{makeidx} %Indexerstellung
+\makeindex %Ausführung der Indexerstellung
+\usepackage[german, intoc]{nomencl} %Für Symbolvverzeichnis (german: Deutsche Benamung; refeq: siehe Gleichung <Nr.>; refpage:Seite <Nr.>; intoc: Aufnahme in Inhaltsverzeichnis)
+\makenomenclature %Ausführung der Erstellung des Symbolverzeichnisses
+\parindent 0pt %Setzt Einrückung beim Absatz auf 0pt
+\parskip .75em %Setzt Abstand zwischen Absätzen auf 12pt
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Titelseite %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+\begin{minipage}{1\textwidth}
+\flushright 
+   \includegraphics[height=1.7cm]{Logo_schwarzgruen_04}
+\end{minipage}
+
+\vspace{3cm}
+\begin{center}
+\textbf{\LARGE{RDF basierte semantische Annotationsansätze}}
+\\
+%\textbf{Untertitel}
+\end{center}
+\vspace{1.5cm}
+
+\begin{center}
+\textbf{Art der Arbeit}
+\end{center}
+
+\vspace{3.5cm}
+
+\begin{flushleft}
+\begin{tabular}{lll}
+\textbf{Betreuer:} & &  ...\\
+& & \\
+\textbf{vorgelegt von:}& & ...\\
+& & Straße\\
+& & PLZ Ort\\
+& & Telefonnummer\\
+& & E-Mail\\
+& & \\
+\textbf{Matrikelnummer:} & & ...\\
+& & \\
+
+\textbf{Bearbeitungszeitraum:} & & ... - ....\\
+& & \\
+
+\textbf{Abgabetermin:} & & ...
+\end{tabular}
+\end{flushleft}
+\end{titlepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%% Verzeichnisse %%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{Roman}\setcounter{page}{2}
+\newpage
+\tableofcontents % Inhaltsverzeichnis
+\newpage
+\listoffigures % Abbildungsverzeichnis
+\newpage 
+\listoftables % Tabellenverzeichnis 
+\newpage
+\listofformels %Formelverzeichnis einfügen
+\newpage
+\include{Acronym} %Abkürzungsverzeichnis
+\newpage
+
+%%%%%%%%%%%%%%%%%%%  Beginn des Textes  %%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{arabic}
+
+%% INCLUDES:
+
+\include{Kapitel1}
+\include{Kapitel2}
+\include{Kapitel3}
+%%
+
+\pagenumbering{Roman}\setcounter{page}{9}
+
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\printbibliography[heading=head]
+
+\include{Erklaerung}
+
+\end{document}
+
+%folgenden Befehl per cmd ausführen um ein Formelverzeichnis zu erstellen
+%makeindex Arbeit.nlo -s nomencl.ist -o Arbeit.nls
