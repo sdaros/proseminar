@@ -2,7 +2,8 @@
 \subsection{Entwicklung}
 \label{sec:entwicklung}
 
-Das Resource Description Framework (RDF) wurde ursprünglich 1999 vom World Wide Web Consortium (W3C) als Empfehlung verabschiedet \parencite{Lassila:99:RMS}. 2004 wurde diese Version aktualisiert und in mehrere Dokumente aufgeteilt \parencite{Beckett:04:RSS}. Die aktuelle, erweiterte Version (RDF 1.1) wurde 2014 veröffentlicht \parencite{Schreiber:14:RP}. RDF 1.1, im Weiteren nur als RDF bezeichnet sofern nicht anders festgelegt, hat das Ziel die Unterstützung neuer Anwendungsfelder für RDF zu stärken. Tabelle~\ref{tab:rdf} zeigt die Erweiterung von RDF 1.0 auf RDF 1.1. Davon kann man ableiten, dass RDF sich in die Richtung entwickelt, immer mehr domänenspezifische Anwendung zu unterstützen. Das bedeutet, dass kleinere Unternehmen mit vereinfachte JSON basierte Web-APIs Datenintegration auf die syntaktischen und semantischen\footnotemark{} Ebene RDF wirksam einsetzen betreiben zu können (und mithilfe von Vokabularen teilweise auch auf der semantischen) Ebene von der Im Hinblick auf die semiotische Ebenen der Integration \parencite[vgl.]{Schissler2004} haben Sender und Empfänger mittels RDF eine gemeinsame Sprache, um sich auf der syntaktischen (und mithilfe von Ontologien und Vokabularen auch auf der semantischen) Ebene verständigen zu können. \footnotetext{ mithilfe von Vokabularen als definiert in Abschnitt~\ref{sec:semantik}. Datenintegration im Kontext von Ebenen der Integration \parencite[vgl.]{Schissler2004}.}
+Das Resource Description Framework (RDF) wurde ursprünglich 1999 vom World Wide Web Consortium (W3C) als Empfehlung verabschiedet \parencite{Lassila:99:RMS}. 2004 wurde diese Version aktualisiert und in mehrere Dokumente aufgeteilt \parencite{Beckett:04:RSS}. Die aktuelle, erweiterte Version (RDF 1.1) wurde 2014 veröffentlicht \parencite{Schreiber:14:RP}. RDF 1.1, im Weiteren nur als RDF bezeichnet sofern nicht anders festgelegt, hat das Ziel die Unterstützung neuer Anwendungsfelder für RDF zu stärken. \autoref{tab:rdf} zeigt die Erweiterung von RDF 1.0 auf RDF 1.1 (vgl. \cite[Abs.~2]{Klyne:04:RDF}; \cite[Abs.~2]{Schreiber:14:RP}; \cite{Wood:14:WNR}). Davon kann man ableiten, dass RDF sich in die Richtung entwickelt, immer mehr domänenspezifische Anwendung zu unterstützen. Das bedeutet, dass kleinere Unternehmen mit vereinfachte JSON basierte REST-APIs Datenintegration\footnotemark{} auf die syntaktischen und semantischen Ebene anhand RDF wirksam einsetzen können.
+\footnotetext{vgl. die semiotische Ebenen der Integration in \citeauthor{Schissler2004}}
 
 \begin{table}[h]
 	\centering
@@ -13,10 +14,10 @@ Das Resource Description Framework (RDF) wurde ursprünglich 1999 vom World Wide
 		\hline \rule[-2ex]{0pt}{5.5ex} API-Feeds Verbinden \footnotemark[\value{footnote}] & RDF/XML& JSON-LD, RDF/XML\\ 
 		\hline
 	\end{tabular}
-	\caption{Die Entwicklung von RDF\\ (vgl. \cite[Abs.~2]{Klyne:04:RDF}, \cite[Abs.~2]{Schreiber:14:RP}, \cite{Wood:14:WNR})}
+	\caption{Die Entwicklung von RDF}
 	\label{tab:rdf}
 \end{table}
-\footnotetext{Diese Anwendungsfelder für RDF wurden in \cite[Abs.~2]{Klyne:04:RDF} nicht expliziert gegeben, aber RDF/XML dort zu nutzen ist auch möglich.}
+\footnotetext{vgl. \cite[Abs.~2]{Klyne:04:RDF}; \cite[Abs.~2]{Schreiber:14:RP}; \cite{Wood:14:WNR}}
 
 \subsection{Beschreibung} 
 
@@ -24,16 +25,18 @@ Laut \citeauthor{Schreiber:14:RP} in \citetitle{Schreiber:14:RP}:
 
 \hyphenblockquote{german}{RDF is intended for situations in which information on the Web needs to be processed by applications, rather than being only displayed to people. RDF provides a common framework for expressing this information so it can be exchanged between applications without loss of meaning.} 
 
-Wie der Name vermuten lässt, bietet das Resource Description Framework ein Gerüst (Modell, Sprachen und Syntaxen) für die Beschreibung von Attributen, Funktionen und Beziehungen der Ressourcen. Ressourcen können alles sein, was einen einzigartigen Identifier (URI oder IRI) hat \parencite[vgl.][Folie~6]{Dekeyzer2013}. RDF legt eine abstrakte Syntax fest um Zusammenhänge zwischen Ressourcen als eine Menge gerichteter Graphen darzustellen. Ein gerichteter Graph (genannt \hyphenquote{german}{Tripel} in RDF) hat eine Knote (Subjekt), die über eine gerichtete Kante (Prädikat) mit einer anderen Knote (Objekt) in Verbindung steht. Abbildung \ref{fig:rdf-intro} veranschaulicht diesen Aspekt. Das Beispiel\footnotemark{} drückt die Beziehung zwischen einem Kartograph und seinen produzierten Werken aus. \footnotetext{Das Datenmodell basiert auf einer Web-Applikation (\href{http://kartenlabor.uni-erfurt.de}{Globmaplab}), die für die Arbeit mit den historischen Beständen der Sammlung Perthes konzipiert wurde.}
+Wie der Name vermuten lässt, bietet das Resource Description Framework ein Gerüst (Modell, Sprachen und Syntaxen) für die Beschreibung von Attributen, Funktionen und Beziehungen der Ressourcen. Ressourcen können alles sein, was einen einzigartigen Identifier (URI oder IRI) hat \parencite[vgl.][Folie~6]{Dekeyzer2013}. RDF legt eine abstrakte Syntax fest um Zusammenhänge zwischen Ressourcen als eine Menge gerichteter Graphen darzustellen. Ein gerichteter Graph (genannt \hyphenquote{german}{Triple} in RDF) hat eine Knote (Subjekt), die über eine gerichtete Kante (Prädikat) mit einer anderen Knote (Objekt) in Verbindung steht. \autoref{fig:rdf-intro} veranschaulicht diesen Aspekt. Das Beispiel\footnotemark{} drückt die Beziehung zwischen einem Kartograph und seinen produzierten Werken aus. 
+
+\footnotetext{Das Datenmodell basiert auf einer Web-Applikation (\href{http://kartenlabor.uni-erfurt.de}{Globmaplab}), die für die Arbeit mit den historischen Beständen der Sammlung Perthes konzipiert wurde. Offenlegung: der Autor dieser Arbeit war Lead-Entwickler dieses Projekts.}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/rdf-intro}
 	\caption[Kernkonzepte des RDFs]{Kernkonzepte des RDFs anhand eines Beispielgraphs}
 	\label{fig:rdf-intro}
-\end{figure}
+u\end{figure}
 
-Die konkrete RDF-Serialisierungsyntaxen werden im Abschnitt~\ref{sec:serialisierung} erörtert. Jeder Komponent eines RDF-Tripels kann ein von drei Ausprägungen haben \parencite[vgl.][Abs.~3,1]{Wood:14:RCA}.
+Die konkrete RDF-Serialisierungsyntaxen werden im \autoref{sec:serialisierung} erörtert. Jeder Komponent eines RDF-Tripels kann ein von drei Ausprägungen haben \parencite[vgl.][Abs.~3.1]{Wood:14:RCA}.
 
 \begin{itemize}
 	\item Ein Subjekt ist ein \textit{IRI} oder ein \textit{Blank Node}.
@@ -41,15 +44,19 @@ Die konkrete RDF-Serialisierungsyntaxen werden im Abschnitt~\ref{sec:serialisier
 	\item Ein Objekt ist entweder ein \textit{IRI}, ein \textit{Literale} oder ein \textit{Blank Node}.
 \end{itemize}
 
-ein IRI (International Resource Identifier) ist eine generalisierung von URI (als definiert in)...
-ein Literal ist
-Blank node leiht die Fähigkeit Subjekt nicht definieren zu müssen was anwendung in RDFa Ansätze findet (siehe \ref{empty})
+Ein \textit{IRI} (International Resource Identifier, festgelegt in RFC 3987) ist eine Generalisierung eines URIs (Uniform Resource Indicator, RFC 3986), die Zeichen aus der nicht-ASCII Bereich der Universal Character Set\footnotemark{} erlauben (vgl. \cite[][Abs~3.2]{Schreiber:14:RP}; \cite[]{rfc3987}). IRIs können die Eigenschaften haben, durch die Internet und World Wide Web (TCP/IP + DNS + HTTP) global eindeutig und \hyphenquote{german}{dereferenzierbar} zu sein \parencite[vgl.][Abs.~2]{Jacobs:04:AWW}. 
+
+Ein \textit{Literal} ist eine konkrete Ausprägung eines Datentyp (wie z. B. eine Zeichenkette, Zahl oder Datum) und kein IRI. Ein String-Literal kann wahlweise mit einem \hyphenquote{german}{language tag} assoziiert sein um die beinhaltete Sprache zu kennzeichnen. RDF Literals können alle Datentypen, die in der XML Schema Definition Language\footnote{\url{http://www.w3.org/TR/xmlschema11-2/}} definiert sind, verwenden \parencite[vgl.][Abs. 5]{Wood:14:RCA}. 
+
+\textit{Blank Nodes} sind von IRIs und Literals disjunkt. Diese Abgrenzung macht es möglich, Ressourcen die keine URI haben in RDF abzubilden. 
+
+\footnotetext{wie in Norm ISO/IEC 10646 und in \hyphenquote{german}{\href{http://www.unicode.org/versions/latest}{The Unicode Standard}} vorgegeben ist}
 
 \subsubsection{Serialisierung}
 \label{sec:serialisierung}
-Mit der Freigabe von RDF 1.1 wurden, unter anderem, zwei nicht XML-basierten Serialisierungssyntaxen eingearbeitet \parencite[vgl.][Abs. 3]{Wood:14:WNR}. Die Resource Description Framework in Attributes (RDFa) Syntax und JSON Linked Data (JSON-LD) Syntaxen ermöglichen semantische Annotation (vgl. Abschnitt \ref{sec:linked-data} für Definition) in Anwendungsfelder wo es vorher mit klassichen RDF/XML nicht geeignet war. 
+Mit der Freigabe von RDF 1.1 wurden vier nicht XML-basierten Serialisierungssyntaxen eingearbeitet \parencite[vgl.][Abs.~3]{Wood:14:WNR}. In dieser Arbeit werden Resource Description Framework in Attributes (RDFa) Syntax und JSON Linked Data (JSON-LD) behandelt. Die beiden Serialisierungssyntaxen ermöglichen semantische Annotation (vgl. \autoref{sec:linked-data} für Definition) in Anwendungsfelder wo es vorher mit klassichen RDF/XML nicht ideal war. Semantische Annotation ist nach \citeauthor[S.~405f]{reif2006semantic}, \hyphenquote{german}{den Prozess des Hinzufügens von semantischen Meta-Daten zu Dokumenten, die den Inhalt eines Dokuments in maschinen-verarbeitbarer Form beschreiben}.
 
-RDFa macht es möglich Maschine-lesbare Metadaten in Web-Seiten einzubinden indem es neue HTML-Attributen für diesen Zweck festlegt. Diese \hyphenquote{german}{Anreicherung} der Metadaten einer Website führt dazu, dass Fremdsoftware in der Lage sind die Metadaten der Webseite automatisch verarbeiten zu können, und dass Suchmaschinen eine gezielter Darstellung des Websiteinhalts für Suchergebnisse anbieten können \parencite[vgl.][Abs. 2]{Schreiber:14:RP}, wobei der letztere Punkt insbesondere dann der Fall ist, wenn die Metadaten an weit verbreitete Ontologien und Vokabulare angeglichen werden (vgl. Abschnitt~\ref{sec:semantik}). Eine RDFa Serialiserungsmöglichkeit für das Datenmodell in Abbildung~\ref{fig:rdf-intro} wurde in Listing~\ref{lst:rdfa} veranschaulicht.
+RDFa macht es möglich maschinenlesbare Metadaten in Web-Seiten einzubinden indem es neue HTML-Attributen für diesen Zweck festlegt. Diese \hyphenquote{german}{Anreicherung} der Metadaten einer Website führt dazu, dass Fremdsoftware in der Lage sind die Metadaten der Webseite automatisch verarbeiten zu können, und dass Suchmaschinen eine gezielter Darstellung des Websiteinhalts für Suchergebnisse anbieten können \parencite[vgl.][Abs.~2]{Schreiber:14:RP}, wobei der letztere Punkt insbesondere dann der Fall ist, wenn die Metadaten an weit verbreitete Ontologien und Vokabulare angeglichen werden (vgl. \autoref{sec:linked-data}). Eine RDFa Serialiserungsmöglichkeit für das Datenmodell in \autoref{fig:rdf-intro} wurde in \autoref{lst:rdfa} veranschaulicht.
 
 \begin{listing}[H]
 \begin{minted}[linenos,
@@ -57,20 +64,13 @@ numbersep=5pt,
 frame=single,
 framesep=2mm]{html}
 <html>
-  <body>
-    <p>test</p>
-  </body>
+<body>
+<p>test</p>
+</body>
 </html>
 \end{minted}
 \caption{Datenmodell in RDFa}
 \label{lst:rdfa}
 \end{listing}
 
-JSON-LD kann benutzt werden um Webseiten semantisch zu annotieren \parencite[vgl.]{Vincent2015}, aber es wurde ursprünglich entwickelt mit der Absicht die Interoperabilität von Webservices für Linked Data (vgl. Definition in Abschnitt~\ref{sec:linked-data}) auszubauen und Linked Data in JSON-basierte Datenbanksysteme abzuspeichern \parencite[vgl.][Abs.~1]{Lanthaler:14:J}. Angenommen Ein Client schickt eine \texttt{HTTP GET} Anfrage an eine API, die JSON-LD unterstützen würde, würde die Antwort (in Bezug wieder auf das Datenmodel von Abbildung \ref{fig:rdf-intro}) Listing \ref{lst:rdfa} entsprechen.
-
-\subsubsection{Semantik}
-\label{sec:semantik}
-
-Im hinblick auf die Semiotische Ebene der Integration ist es notwendig festgelegte Semantik-Standards zu haben um eine Nachricht richtig interpretieren zu können.
-
-
+JSON-LD wurde ursprünglich entwickelt mit der Absicht die Interoperabilität von Webservices für Linked Data (vgl. Definition in \autoref{sec:linked-data}) auszubauen und Linked Data in JSON-basierte Datenbanksysteme abzuspeichern \parencite[vgl.][Abs.~1]{Lanthaler:14:J}.\footnote{\cite{Vincent2015} zeigt auch wie JSON-LD benutzt werden kann um Webseiteninhalt semantisch zu annotieren.} Die Möglichkeit Linked Data (genauer gesagt RDF-Graphen) in der Javascript Object Notation\footnote{\cite[vgl.]{ecma2013}} (JSON) zu serialisieren lässt eine reibungslose Upgrade-Pfad für eingesetzte Systeme zu. Beispiel X veranschaulicht wie die existierende JSON-basierte REST-APIs des Globmaplabs mit JSON-LD als RDF-Graphen ausgedruckt werden können.

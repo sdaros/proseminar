@@ -38,6 +38,8 @@
 \renewcommand{\figurename}{Abb.}} %Abb. statt Abbildungen
 \addto\captionsngerman{%
 \renewcommand{\tablename}{Tab.}} %Tab. statt Tabelle
+\addto\captionsngerman{%
+\def\listingname{Listing}} % für Quellcode
 \usepackage{eurosym} %Eurosymbol mit \euro{}
 \usepackage{url} %URLSs adden mit \url{}
 \usepackage{titlesec} % Textüberschriften anpassen
@@ -148,7 +150,7 @@
 \usepackage[german, intoc]{nomencl} %Für Symbolvverzeichnis (german: Deutsche Benamung; refeq: siehe Gleichung <Nr.>; refpage:Seite <Nr.>; intoc: Aufnahme in Inhaltsverzeichnis)
 \makenomenclature %Ausführung der Erstellung des Symbolverzeichnisses
 \parindent 0pt %Setzt Einrückung beim Absatz auf 0pt
-\parskip .75em %Setzt Abstand zwischen Absätzen auf 12pt
+\parskip .75em %Setzt Abstand zwischen Absätzen auf .75em
 \begin{document}
 
 
