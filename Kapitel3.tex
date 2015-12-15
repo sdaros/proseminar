@@ -36,12 +36,12 @@ In sein 2006 erschienen Artikel hat Tim Berners-Lee das Semantic Web, nach \cite
 
 Mit der Freigabe von RDF 1.1 wurden vier nicht XML-basierten Serialisierungssyntaxen eingearbeitet \parencite[vgl.][Abs.~3]{Wood:14:WNR}. In dieser Arbeit werden Resource Description Framework in Attributes (RDFa) Syntax und JSON Linked Data (JSON-LD) behandelt. Die beiden Serialisierungssyntaxen ermöglichen semantische Annotation (vgl. \autoref{sec:linked-data} für Definition) in Anwendungsfelder wo es vorher mit klassichen RDF/XML nicht ideal war. Semantische Annotation ist nach \citeauthor[S.~405f]{reif2006semantic}, \hyphenquote{german}{den Prozess des Hinzufügens von semantischen Meta-Daten zu Dokumenten, die den Inhalt eines Dokuments in maschinen-verarbeitbarer Form beschreiben}.
 
-RDFa macht es möglich maschinenlesbare Metadaten in Web-Seiten einzubinden indem es neue HTML-Attributen für diesen Zweck festlegt. Diese \hyphenquote{german}{Anreicherung} der Metadaten einer Website führt dazu, dass Fremdsoftware in der Lage sind die Metadaten der Webseite automatisch verarbeiten zu können, und dass Suchmaschinen eine gezielter Darstellung des Websiteinhalts für Suchergebnisse anbieten können \parencite[vgl.][Abs.~2]{Schreiber:14:RP}, wobei der letztere Punkt insbesondere dann der Fall ist, wenn die Metadaten an weit verbreitete Ontologien und Vokabulare angeglichen werden. Eine RDFa Serialiserungsmöglichkeit für das Datenmodell in \autoref{fig:html-map} wurde in \autoref{lst:rdfa} veranschaulicht.
+RDFa macht es möglich maschinenlesbare Metadaten in Webseiten einzubinden indem es neue HTML-Attributen für diesen Zweck festlegt. Diese \hyphenquote{german}{Anreicherung} der Metadaten einer Website führt dazu, dass Fremdsoftware in der Lage sind die Metadaten der Webseite automatisch verarbeiten zu können, und dass Suchmaschinen eine gezielter Darstellung des Websiteinhalts für Suchergebnisse anbieten können \parencite[vgl.][Abs.~2]{Schreiber:14:RP}, wobei der letztere Punkt insbesondere dann der Fall ist, wenn die Metadaten an weit verbreitete Ontologien und Vokabulare angeglichen werden. Eine RDFa Serialisierungsmöglichkeit für das Datenmodell in \autoref{fig:html-map} wurde in \autoref{lst:rdfa} veranschaulicht.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.7\linewidth]{images/htmlmap_marked}
-	\caption[Karte und Zugehörige Autoren]{Karte und Zugehörige Autoren}
+	\caption[Karte und Zugehörige Autoren]{Karte und Zugehörige Autoren (Screenshot vom Globmaplab Webseite)}
 	\label{fig:html-map}
 \end{figure}
 
@@ -51,11 +51,12 @@ numbersep=5pt,
 frame=single,
 framesep=1mm]{html}
 <body prefix="gndo: http://d-nb.info/standards/elementset/gnd#
-      marcRoles: http://id.loc.gov/vocabulary/relators/"
+      rdau: http://rdaregistry.info/Elements/u/"
 >
 ...
-<div resource="http://kartenlabor.uni-erfurt.de/maps/5">
-  <h4 property="gndo:preferredName">Süd-America</h4>	
+<div resource="http://kartenlabor.uni-erfurt.de/maps/5"
+     typeof="http://schema.org/Map">
+  <h4 property="gndo:preferredNameForTheWork">Süd-America</h4>	
   <dt>Bezeichner:</dt>
   <dd>5</dd>
   ...
@@ -66,8 +67,8 @@ framesep=1mm]{html}
     <tbody>
       ...
       <div resource="http://d-nb.info/gnd/116091991"
-           typeof="DifferentiatedPerson">
-        <tr property="marcRoles:ctg" 
+           typeof="gndo:cartographer">
+        <tr property="rdau:cartographerOf" 
             resource="http://kartenlabor.uni-erfurt.de/maps/5">
           <td>
             Perthes, Justus ( * 1749-9-11 † 1816-5-1 ) 
@@ -76,9 +77,9 @@ framesep=1mm]{html}
         </tr>
       </div>
       ...
-    </tbody>
-  </table>
 \end{minted}
 \caption{Datenmodell in RDFa}
 \label{lst:rdfa}
 \end{listing}
+
+Auf die erste Zeile im \autoref{lst:rdfa} sieht man das \texttt{prefix} Attribut, das zwei Abkürzungen zu bekannten Ontologien festlegt. Das Attribut \texttt{gndo} verweist auf die Gemeinsame Normdatei (GND) Ontologie der Deutsche National Bibliothek und \texttt{rdau} auf das Resource Description \& Access (RDA) Vokabular.  Zeile 5 bis 10 bildet das HTML Definition List in der rechten Hälfte der \autoref{fig:html-map} ab. Mittels RDFa kann man zum Ausdruck bringen, dass die Definitionsliste eine Karte (\texttt{typeof="http://schema.org/Map"}) mit einem IRI Bezeichner innerhalb die Uni-Erfurt Domain und dem Namen \hyphenquote{german}{Süd-America} beschreibt. Zeile 13 bis 29 stellt die Tabelle unten in \autoref{fig:html-map} dar. Hier wird die Ressource Justus Perthes (\texttt{http://d-nb.info/gnd/116091991}) mit der Süd-America Karte verlinkt, indem er die Rolle des Kartographs übernimmt. 
